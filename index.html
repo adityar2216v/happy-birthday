@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Ayushi Di!</title>
+    <title>Happy Birthday Ayushi !</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -503,9 +503,25 @@
             document.body.style.overflow = 'hidden';
         };
     </script>
-    <audio autoplay loop>
+    <audio id="bgMusic" autoplay loop controls>
         <source src="happy-birthday-254480.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <script>
+        // Handle audio autoplay
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('bgMusic');
+            audio.play().catch(function(error) {
+                console.log("Audio autoplay failed:", error);
+            });
+            
+            // Add click listener to enable audio on user interaction
+            document.body.addEventListener('click', function() {
+                audio.play().catch(function(error) {
+                    console.log("Audio play failed:", error);
+                });
+            }, { once: true });
+        });
+    </script>
 </body>
 </html>
